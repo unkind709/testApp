@@ -21,10 +21,14 @@
         return directive;
 
         /** @ngInject */
-        function NavbarController(moment, $scope) {
+        function NavbarController(moment, $scope, $state) {
             initNavbar();
             initNavbarMenuActive();
             var vm = this;
+
+            vm.logout = function() {
+                $state.go('login');
+            }
 
             // "vm.creationDate" is available by directive option "bindToController: true"
         }

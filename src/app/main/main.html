@@ -9,14 +9,14 @@
         </div> -->
         <!-- Page-Title -->
         <div class="row">
-            <div class="col-sm-offset-7 col-sm-3">
+            <div class="col-sm-offset-7 col-sm-3 text-right">
                 <h4>
                     เหลือเวลาทำข้อสอบ&nbsp;&nbsp; 
                     <timer end-time="main.endTime"> {{hours | twopos}} : {{minutes | twopos}} : {{seconds | twopos}}</timer>
                 </h4>
                 
             </div>
-            <div class="col-sm-2">
+            <div class="col-sm-2 text-right">
                 <button type="button" class="btn btn-inverse btn-rounded w-md waves-effect waves-light m-b-5">ส่งกระดาษคำตอบ</button>
             </div>
         </div>
@@ -33,7 +33,7 @@
 
             </div>
             <div class="col-lg-4">
-                <div class="card-box" style="height: 500px; overflow:scroll;">
+                <div class="card-box" style="height: 600px; overflow:scroll;">
                     <h4 class="text-dark  header-title m-t-0">PAT 1 - Answer sheet</h4>
                     <div class="row">
                         <div class="col-sm-12" ng-repeat="n in [] | range:100">

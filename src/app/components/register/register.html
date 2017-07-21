@@ -7,30 +7,67 @@
                         <h4 class="panel-title text-center">&nbsp;</h4>
                     </div>
                     <div class="panel-body">
-                        <form id="commentForm" method="get" action="" class="form-horizontal" novalidate="novalidate">
+                        <form id="commentForm" class="form-horizontal">
                             <div id="rootwizard" class="pull-in">
                                 <ul class="nav nav-tabs navtab-custom nav-justified bg-muted">
-                                    <li class="active"><a href="#first" data-toggle="tab" aria-expanded="true">First</a></li>
-                                    <li><a href="#second" data-toggle="tab">Second</a></li>
-                                    <li><a href="#third" data-toggle="tab">Third</a></li>
+                                    <li ng-class="{active: regis.currentPage == 1}"><a>ประวัติ</a></li>
+                                    <li ng-class="{active: regis.currentPage == 2}"><a>ที่อยู่</a></li>
+                                    <li ng-class="{active: regis.currentPage == 3}"><a>สมัครสอบ</a></li>
                                 </ul>
                                 <div class="tab-content m-b-0 bx-s-0">
-                                    <div class="tab-pane fade active in" id="first">
-                                        <div class="control-group">
-                                            <label class="control-label" for="emailfield">Email</label>
-                                            <div class="controls">
-                                                <input type="text" id="emailfield" name="emailfield" class="required email form-control" aria-required="true">
+
+                                    <div class="tab-pane fade" ng-class="{active: regis.currentPage == 1, in: regis.currentPage == 1}" id="first">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">ชื่อ</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" ng-model="firstName" ng-class="{'parsley-error': firstNameValid}">
+                                                <ul class="parsley-errors-list filled" ng-show="firstNameValid">
+                                                    <li class="parsley-required">กรุณากรอกชื่อ</li>
+                                                </ul>
+                                            </div>
+                                            <label class="col-sm-2 control-label">สกุล</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" ng-model="lastName" ng-class="{'parsley-error': lastNameValid}">
+                                                <ul class="parsley-errors-list filled" ng-show="lastNameValid">
+                                                    <li class="parsley-required">กรุณากรอกนามสกุล</li>
+                                                </ul>
                                             </div>
                                         </div>
-
-                                        <div class="control-group">
-                                            <label class="control-label" for="namefield">Name</label>
-                                            <div class="controls">
-                                                <input type="text" id="namefield" name="namefield" class="required form-control" aria-required="true">
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">เรียนอยู่ชั้น</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" ng-model="studyClass">
+                                            </div>
+                                            <label class="col-sm-2 control-label">เกรดเฉลี่ย</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" ng-model="avgGrade" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">โรงเรียน</label>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control" ng-model="studyClass">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">จังหวัด</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" ng-model="studyClass">
+                                            </div>
+                                            <label class="col-sm-2 control-label">รหัสโรงเรียน</label>
+                                            <div class="col-sm-3">
+                                                <input type="text" class="form-control" ng-model="avgGrade" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-3 control-label">เลขประจำตัวประชาชน</label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control" ng-model="studyClass">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="second">
+
+                                    <div class="tab-pane fade" ng-class="{active: regis.currentPage == 2, in: regis.currentPage == 2}" id="second">
                                         <div class="control-group">
                                             <label class="control-label" for="urlfield">URL</label>
                                             <div class="controls">
@@ -38,7 +75,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="tab-pane fade" id="third">
+
+                                    <div class="tab-pane fade" ng-class="{active: regis.currentPage == 3, in: regis.currentPage == 3}" id="third">
                                         <div class="form-group clearfix">
                                             <div class="col-lg-12">
                                                 <div class="checkbox checkbox-primary">
@@ -50,10 +88,13 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <br/>          
                                     <ul class="pager m-b-0 wizard">
-                                        <li class="previous disabled"><a href="#" class="btn btn-primary waves-effect waves-light">Previous</a></li>
-                                        <li class="next"><a href="#" class="btn btn-primary waves-effect waves-light">Next</a></li>
+                                        <li class="previous" ng-class="{disabled : regis.currentPage == 1}"><a href class="btn btn-primary waves-effect waves-light" ng-click="regis.previousPage()">ย้อนกลับ</a></li>
+                                        <li class="next" ng-show="regis.currentPage != 3"><a href class="btn btn-primary waves-effect waves-light" ng-click="regis.nextPage()">ถัดไป</a></li>
+                                        <li class="next" ng-show="regis.currentPage == 3"><a href class="btn btn-primary waves-effect waves-light" ng-click="regis.confirmPage()">ยืนยัน</a></li>
                                     </ul>
+
                                 </div>
                             </div>
                         </form>

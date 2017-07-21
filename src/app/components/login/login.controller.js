@@ -6,9 +6,12 @@
         .controller('LoginController', LoginController);
 
     /** @ngInject */
-    function LoginController($log, $scope) {
+    function LoginController($log, $rootScope, $state) {
         var vm = this;
+        $rootScope.navbarFlag = false;
 
-
+        vm.confirm = function() {
+            $state.go('home');
+        }
     }
 })();
