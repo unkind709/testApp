@@ -1,4 +1,4 @@
-(function () {
+(function() {
     'use strict';
 
     angular
@@ -12,8 +12,6 @@
 
         vm.endTime = new Date("July 23, 2017 15:00:00");
         $scope.timerRunning = true;
-        
-        vm.pdfUrl = 'assets/pdf/dota2.pdf';
 
     }
 })();

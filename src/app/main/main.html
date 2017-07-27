@@ -11,10 +11,10 @@
         <div class="row">
             <div class="col-sm-offset-7 col-sm-3 text-right">
                 <h4>
-                    เหลือเวลาทำข้อสอบ&nbsp;&nbsp; 
+                    เหลือเวลาทำข้อสอบ&nbsp;&nbsp;
                     <timer end-time="main.endTime"> {{hours | twopos}} : {{minutes | twopos}} : {{seconds | twopos}}</timer>
                 </h4>
-                
+
             </div>
             <div class="col-sm-2 text-right">
                 <button type="button" class="btn btn-inverse btn-rounded w-md waves-effect waves-light m-b-5">ส่งกระดาษคำตอบ</button>
@@ -27,7 +27,7 @@
                     <div class="panel-body">
                         <!-- <pdf-viewer delegate-handle="my-pdf-container" url="main.pdfUrl" scale="1.2" show-toolbar="false" overflow-scroll="true"></pdf-viewer> -->
                         <!-- <pdf-object file="http://www.polyu.edu.hk/iaee/files/pdf-sample.pdf"></pdf-object> -->
-                        <div ng-pdf-object url="assets/pdf/dota2.pdf#toolbar=0&navpanes=0" height="800"></div>
+                        <div ng-pdf-object url="assets/pdf/dota2.pdf" height="800"></div>
                     </div>
                 </div>
 
